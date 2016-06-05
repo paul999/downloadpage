@@ -7,6 +7,14 @@ services:
 
     paul999.downloadpage.acp_controller:
         class: paul999\downloadpage\controller\acp_controller
+        arguments:
+          - '@request'
+          - '@dbal.conn'
+          - '@template'
+          - '@files.upload'
+          - '%paul999.downloadpage.tables.downloads%'
+          - '%paul999.downloadpage.tables.versions%'
+          - '%paul999.downloadpage.tables.releases%'
 
     paul999.downloadpage.listener:
         class: paul999\downloadpage\event\main_listener
