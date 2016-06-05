@@ -12,11 +12,6 @@ namespace paul999\downloadpage\migrations;
 
 class create_table extends \phpbb\db\migration\migration
 {
-    static public function depends_on()
-    {
-        return array();
-    }
-
     public function update_schema()
     {
         return array(

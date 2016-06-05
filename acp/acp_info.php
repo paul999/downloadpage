@@ -11,7 +11,7 @@
 namespace paul999\downloadpage\acp;
 
 class acp_info {
-    function module()
+    public function module()
     {
         return array(
             'filename'	=> '\paul999\downloadpage\acp\acp_module',

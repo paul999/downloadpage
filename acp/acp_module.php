@@ -22,7 +22,7 @@ class acp_module {
     /** @var   */
     public $tpl_name;
 
-    function main($id, $mode)
+    public function main($id, $mode)
     {
         global $phpbb_container;
         /** @var acp_controller $controller */
