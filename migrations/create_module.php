@@ -9,7 +9,7 @@
  */
 namespace paul999\downloadpage\migrations;
 
-class add_module extends \phpbb\db\migration\migration
+class create_module extends \phpbb\db\migration\migration
 {
     public function update_data()
     {
