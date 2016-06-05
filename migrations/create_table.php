@@ -22,7 +22,7 @@ class create_table extends \phpbb\db\migration\migration
                         'name'          => array('VCHAR:255', 0),
                         'version_time'  => array('TIMESTAMP', 0),
                         'eol'           => array('VCHAR:255', ''),
-                        'order'         => array('TINT:1', ''),
+                        'sort'          => array('TINT:1', ''),
                     ),
                     'PRIMARY_KEY' => 'version_id',
                     'KEYS'        => array(
