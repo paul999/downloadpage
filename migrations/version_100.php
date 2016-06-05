@@ -23,7 +23,7 @@ class version_100 extends \phpbb\db\migration\migration
     public function update_data()
     {
         return array(
-            array('config.update', array('paul999.downloadpage.version', '1.0.0')),
+            array('config.add', array('paul999.downloadpage.version', '1.0.0')),
         );
     }
 }
