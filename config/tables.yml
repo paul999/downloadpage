@@ -1,0 +1,4 @@
+parameters:
+    paul999.downloadpage.tables.versions: %core.table_prefix%dp_versions
+    paul999.downloadpage.tables.releases: %core.table_prefix%dp_releases
+    paul999.downloadpage.tables.downloads: %core.table_prefix%dp_downloads

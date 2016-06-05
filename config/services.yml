@@ -1,0 +1,14 @@
+imports:
+    - { resource: tables.yml }
+
+services:
+    paul999.downloadpage.controller:
+        class: paul999\downloadpage\controller\main_controller
+
+    paul999.downloadpage.acp_controller:
+        class: paul999\downloadpage\controller\acp_controller
+
+    paul999.downloadpage.listener:
+        class: paul999\downloadpage\event\main_listener
+        tags:
+            - { name: event.listener }
