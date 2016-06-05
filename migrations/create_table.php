@@ -26,7 +26,7 @@ class create_table extends \phpbb\db\migration\migration
                     ),
                     'PRIMARY_KEY' => 'version_id',
                     'KEYS'        => array(
-                        'order' => array('INDEX', 'order'),
+                        'sort' => array('INDEX', 'sort'),
                     ),
                 ),
                 $this->table_prefix . 'dp_releases' => array(
