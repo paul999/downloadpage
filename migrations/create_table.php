@@ -49,7 +49,6 @@ class create_table extends \phpbb\db\migration\migration
                         'downloads'     => array('UINT', 0),
                         'filename'      => array('VCHAR:255'),
                         'filelocation'  => array('VCHAR:255'),
-                        'counter'       => array('UINT', 0),
                     ),
                     'PRIMARY_KEY' => 'download_id',
                     'KEYS'        => array(
