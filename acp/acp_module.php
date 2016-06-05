@@ -31,7 +31,7 @@ class acp_module {
 
         $this->tpl_name = 'acp_downloads';
 
-        switch($mode) {
+        switch ($mode) {
             case 'versions':
                 $controller->versions();
                 $this->page_title = 'ACP_DOWNLOADPAGE_VERSIONS';
