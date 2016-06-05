@@ -51,7 +51,7 @@ class create_table extends \phpbb\db\migration\migration
                         'filelocation'  => array('VCHAR:255'),
                         'counter'       => array('UINT', 0),
                     ),
-                    'PRIMARY_KEY' => 'release_id',
+                    'PRIMARY_KEY' => 'download_id',
                     'KEYS'        => array(
                         'release_id' => array('INDEX', 'release_id'),
                     ),
