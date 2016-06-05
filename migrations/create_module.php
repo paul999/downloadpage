@@ -17,7 +17,7 @@ class create_module extends \phpbb\db\migration\migration
             array('module.add', array('acp', 'ACP_CAT_DOT_MODS', 'ACP_DOWNLOADPAGE')),
             array('module.add', array(
                 'acp', 'ACP_DOWNLOADPAGE', array(
-                    'module_basename'	=> '\paul999\ajaxshoutbox\acp\acp_module',
+                    'module_basename'	=> '\paul999\downloadpage\acp\acp_module',
                     'modes'				=> array('versions', 'settings'),
                 ),
             )),
