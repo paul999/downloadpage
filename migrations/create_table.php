@@ -23,6 +23,7 @@ class create_table extends \phpbb\db\migration\migration
                         'version_time'  => array('TIMESTAMP', 0),
                         'eol'           => array('VCHAR:255', ''),
                         'sort'          => array('TINT:1', 0),
+                        'active'        => array('TINT:1', 1),
                     ),
                     'PRIMARY_KEY' => 'version_id',
                     'KEYS'        => array(
