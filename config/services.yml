@@ -4,6 +4,9 @@ imports:
 services:
     paul999.downloadpage.controller:
         class: paul999\downloadpage\controller\main_controller
+        arguments:
+          - '@dbal.conn'
+          - '%paul999.downloadpage.tables.downloads%'
 
     paul999.downloadpage.acp_controller:
         class: paul999\downloadpage\controller\acp_controller
