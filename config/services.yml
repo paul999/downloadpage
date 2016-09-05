@@ -5,10 +5,14 @@ services:
     paul999.downloadpage.controller:
         class: paul999\downloadpage\controller\main_controller
         arguments:
+          - '@controller.helper'
           - '@dbal.conn'
+          - '@template'
           - '%paul999.downloadpage.tables.downloads%'
           - '%paul999.downloadpage.tables.versions%'
           - '%paul999.downloadpage.tables.releases%'
+          - '%core.root_path%'
+          - '%core.php_ext%'
 
     paul999.downloadpage.acp_controller:
         class: paul999\downloadpage\controller\acp_controller
