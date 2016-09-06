@@ -8,6 +8,8 @@ services:
           - '@controller.helper'
           - '@dbal.conn'
           - '@template'
+          - '@language'
+          - '@user'
           - '%paul999.downloadpage.tables.downloads%'
           - '%paul999.downloadpage.tables.versions%'
           - '%paul999.downloadpage.tables.releases%'

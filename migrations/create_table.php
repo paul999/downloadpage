@@ -46,12 +46,12 @@ class create_table extends \phpbb\db\migration\migration
                     'COLUMNS'     => array(
                         'download_id'   => array('UINT', null, 'auto_increment'),
                         'release_id'    => array('UINT', 0),
-                        'name'          => array('VCHAR:255', 0),
+                        'name'          => array('VCHAR:255', ''),
                         'description'   => array('TEXT', ''),
                         'downloads'     => array('UINT', 0),
                         'type'          => array('UINT', 0),
-                        'filename'      => array('VCHAR:255'),
-                        'filelocation'  => array('VCHAR:255'),
+                        'filename'      => array('VCHAR:255', ''),
+                        'filelocation'  => array('VCHAR:255', ''),
                     ),
                     'PRIMARY_KEY' => 'download_id',
                     'KEYS'        => array(
