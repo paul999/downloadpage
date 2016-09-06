@@ -11,10 +11,13 @@
 namespace paul999\downloadpage\controller;
 
 
+use paul999\downloadpage\core\constants;
 use phpbb\controller\helper;
 use phpbb\db\driver\driver_interface;
 use phpbb\exception\http_exception;
+use phpbb\language\language;
 use phpbb\template\template;
+use phpbb\user;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class main_controller
@@ -58,19 +61,29 @@ class main_controller
      * @var string
      */
     private $php_ex;
+    /**
+     * @var language
+     */
+    private $lang;
+    /**
+     * @var user
+     */
+    private $user;
 
     /**
      * main_controller constructor.
      * @param helper $controller_helper
      * @param driver_interface $db
      * @param template $template
+     * @param language $lang
+     * @param user $user
      * @param string $downloads_table
      * @param string $versions_table
      * @param string $releases_table
      * @param string $root_path
      * @param string $php_ex
      */
-    public function __construct(helper $controller_helper, driver_interface $db, template $template, $downloads_table, $versions_table, $releases_table, $root_path, $php_ex)
+    public function __construct(helper $controller_helper, driver_interface $db, template $template, language $lang, user $user, $downloads_table, $versions_table, $releases_table, $root_path, $php_ex)
     {
         $this->db = $db;
         $this->downloads_table = $downloads_table;
@@ -80,6 +93,8 @@ class main_controller
         $this->releases_table = $releases_table;
         $this->template = $template;
         $this->php_ex = $php_ex;
+        $this->lang = $lang;
+        $this->user = $user;
     }
 
     /**
@@ -103,15 +118,21 @@ class main_controller
 
             while ($row_row = $this->db->sql_fetchrow($result_row))
             {
-                $this->template->assign_block_vars('releases.versions', array());
+                $this->template->assign_block_vars('releases.versions', array(
+                    'RELEASED_AT'   => $this->lang->lang('RELEASED_AT', $this->user->format_date($row_row['release_times'])),
+                ));
 
-                $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE release_id = ' . (int)$row_row['release_id'];
+                $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE release_id = ' . (int)$row_row['release_id'] . ' ORDER BY release_time DESC';
 
                 $int_result = $this->db->sql_query($sql);
 
-                while($int_result = $this->db->sql_fetchrow($int_result))
+                while($int_row = $this->db->sql_fetchrow($int_result))
                 {
-                    $this->template->assign_block_vars('releases.versions.downloads', array());
+                    $this->template->assign_block_vars('releases.versions.downloads', array(
+                        'U_DOWNLOAD'        => '',
+                        'U_NAME'            => $int_row['name'],
+                        'S_FULL_PACKAGE'    => $int_row['type'] == constants::FULL_PACKAGE,
+                    ));
                 }
                 $this->db->sql_freeresult($int_result);
             }

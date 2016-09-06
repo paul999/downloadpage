@@ -24,3 +24,46 @@
 .color_2 {
     background-image: url('images/dl_2.gif');
 }
+
+.color_3 {
+    background-image: url('images/dl_3.gif');
+}
+
+.color_4 {
+    background-image: url('images/dl_4.gif');
+}
+
+.color_5 {
+    background-image: url('images/dl_5.gif');
+}
+
+.color_6 {
+    background-image: url('images/dl_6.gif');
+}
+
+.small_left {
+    float: left;
+}
+.small_right{
+    float: right;
+    margin-right: 25px;
+}
+
+.download_small {
+    font-size:0.9em;
+    margin-top:-10px;
+}
+
+.left {
+    float: left;
+    width: 49%;
+}
+
+.middle {
+    float: right;
+    width: 49%;
+}
+
+.download_heading_img {
+    background-image: url("images/t_download.gif");
+}
