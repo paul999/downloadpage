@@ -1,0 +1,26 @@
+.download {
+    color: #FFF;
+    padding: 1em 0 0 1em;
+    background-repeat: no-repeat;
+    height: 80px;
+    width: 300px;
+}
+
+.download h2 {
+    color: #FFF;
+    margin: 0 0 .5em 0;
+    font-weight: bold;
+}
+
+.download a {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+.color_1 {
+    background-image: url('images/dl_1.gif');
+}
+
+.color_2 {
+    background-image: url('images/dl_2.gif');
+}

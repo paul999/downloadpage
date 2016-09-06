@@ -92,7 +92,9 @@ class main_controller
         $result = $this->db->sql_query($sql);
         while ($row = $this->db->sql_fetchrow($result))
         {
-            $this->template->assign_block_vars('releases', array());
+            $this->template->assign_block_vars('releases', array(
+                'NAME'  => $row['name'],
+            ));
 
             // Yes, we do a queries in a loop here.
             // However, as the versions table should have <= 3 versions this should be fine.
