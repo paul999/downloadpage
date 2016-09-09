@@ -113,7 +113,7 @@ class main_controller
 
             // Yes, we do a queries in a loop here.
             // However, as the versions table should have <= 3 versions this should be fine.
-            $sql_row = 'SELECT * FROM ' . $this->releases_table . ' WHERE version_id ' . $row['version_id'] . ' ORDER BY release_time';
+            $sql_row = 'SELECT * FROM ' . $this->releases_table . ' WHERE version_id = ' . $row['version_id'] . ' ORDER BY release_time';
             $result_row = $this->db->sql_query($sql_row);
 
             while ($row_row = $this->db->sql_fetchrow($result_row))
