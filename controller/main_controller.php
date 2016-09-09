@@ -102,7 +102,7 @@ class main_controller
      */
     public function main()
     {
-        $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE active = 1 ORDER BY sort';
+        $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE active = 1 ORDER BY sort DESC';
 
         $result = $this->db->sql_query($sql);
         while ($row = $this->db->sql_fetchrow($result))
