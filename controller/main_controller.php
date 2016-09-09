@@ -132,6 +132,8 @@ class main_controller
                         'U_DOWNLOAD'        => $this->controller_helper->route('paul999_downloadpage_download', array('id' => $int_row['download_id'])),
                         'NAME'              => $int_row['name'],
                         'S_FULL_PACKAGE'    => $int_row['type'] == constants::FULL_PACKAGE,
+                        'S_LANGPACK'        => $int_row['type'] == constants::TRANSLATION,
+                        'S_UPDATE_PACK'     => $int_row['type'] == constants::UPDATE_PACKAGE,
                     ));
                 }
                 $this->db->sql_freeresult($int_result);
