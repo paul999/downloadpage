@@ -109,6 +109,8 @@ class main_controller
         {
             $this->template->assign_block_vars('releases', array(
                 'NAME'  => $row['name'],
+                'EOL'   => $row['eol'],
+                'L_EOL' => $this->lang->lang('PHPBB_EOL', $row['name']),
             ));
 
             // Yes, we do a queries in a loop here.
