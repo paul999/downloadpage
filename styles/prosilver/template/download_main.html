@@ -45,16 +45,18 @@
         <!-- END releases.versions -->
 
         <!-- BEGIN releases.versions -->
-            <!-- IF releases.versions.downloads.S_LANG_PACKAGE -->
-                <!-- IF releases.versions.S_FIRST_ROW -->
-                    <h2>{L_LANG_PACKS}</h2>
-                    <ul>
+            <!-- BEGIN releases.versions.downloads -->
+                <!-- IF releases.versions.downloads.S_LANG_PACKAGE -->
+                    <!-- IF releases.versions.S_FIRST_ROW -->
+                        <h2>{L_LANG_PACKS}</h2>
+                        <ul>
+                    <!-- ENDIF -->
+                    <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
+                    <!-- IF releases.versions.S_LAST_ROW -->
+                        </ul>
+                    <!-- ENDIF -->
                 <!-- ENDIF -->
-                <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
-                <!-- IF releases.versions.S_LAST_ROW -->
-                    </ul>
-                <!-- ENDIF -->
-            <!-- ENDIF -->
+            <!-- END releases.versions.downloads -->
         <!-- END releases.versions -->
     </div>
 <!-- END releases -->
