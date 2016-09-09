@@ -12,6 +12,7 @@ namespace paul999\downloadpage\controller;
 
 use phpbb\db\driver\driver_interface;
 use phpbb\files\upload;
+use phpbb\json_response;
 use phpbb\request\request_interface;
 use phpbb\template\template;
 
@@ -83,16 +84,19 @@ class acp_controller
      */
     public function versions() {
         $action = $this->request->variable('action', '');
+        $id = $this->request->variable('id', 0);
 
         switch ($action) {
             case 'order':
-                $this->orderVersions();
+                $this->orderVersions($id, $this->request->variable('up', false));
                 break;
             case 'add':
                 $this->addVersion();
                 break;
-            case 'addNew':
-                $this->addNewVersion();
+            case 'active':
+                $this->activate($id, $this->request->is_set('active'));
+            case 'addRelease':
+                $this->createNewRelease();
                 break;
             default:
                 $this->versionsIndex();
@@ -103,14 +107,42 @@ class acp_controller
      *
      */
     private function versionsIndex() {
+        $sql = 'SELECT * FROM ' . $this->versions_table . ' ORDER BY sort DESC';
+        $result = $this->db->sql_query($sql);
+
+        while($row = $this->db->sql_fetchrow($result))
+        {
+            $this->template->assign_block_vars('versions', array(
+                'NAME'      => $row['name'],
+                'ACTIVE'    => $row['active'],
+                'COUNT'     => 0,
+            ));
+        }
+        $this->db->sql_freeresult($result);
+
+        $this->template->assign_vars(array(
+
+        ));
+    }
+
+    /**
+     * @param int $id
+     * @param boolean $up
+     */
+    private function orderVersions($id, $up) {
 
     }
 
     /**
-     *
+     * @param int $id
+     * @param boolean $active
      */
-    private function orderVersions() {
+    private function activate($id, $active) {
+        $sql = 'UPDATE ' . $this->versions_table . ' SET active = ' . (int)$active . ' WHERE release_id = ' . (int)$id;
+        $this->db->sql_query($sql);
 
+        $result = new json_response();
+        $result->send(array('result' => true));
     }
 
     /**
@@ -123,7 +155,7 @@ class acp_controller
     /**
      *
      */
-    private function addNewVersion() {
+    private function createNewRelease() {
 
     }
 

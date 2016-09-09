@@ -1,3 +1,40 @@
 <!-- INCLUDE overall_header.html -->
+<a id="maincontent"></a>
+
+<!-- IF VERSIONS_MAIN -->
+<h1>{L_VERSIONS_ADMIN}</h1>
+
+<p>{L_VERSIONS_ADMIN_EXPLAIN}</p>
+
+
+<table class="table1">
+    <col class="row1" ><col class="row1" ><col class="row2" ><col class="row2" >
+    <thead>
+    <tr>
+        <th>{L_RELEASE_NAME}</th>
+        <th style="text-align: center; width: 20%;">{L_NUMBER_OF_VERSIONS}</th>
+        <th style="text-align: center; width: 10%;">{L_ACTIVE}</th>
+        <th style="text-align: center; width: 25%;">{L_SORT}</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!-- BEGIN versions -->
+    <tr class="row-highlight">
+        <td><strong title="{versions.NAME}">{versions.NAME}</strong></td>
+        <td style="text-align: center;">
+            {versions.COUNT}
+        </td>
+        <td style="text-align: center;">
+
+        </td>
+        <td style="text-align: center;">
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!-- ENDIF -->
+
 
 <!-- INCLUDE overall_footer.html -->
