@@ -129,11 +129,11 @@ class main_controller
                 while($int_row = $this->db->sql_fetchrow($int_result))
                 {
                     $this->template->assign_block_vars('releases.versions.downloads', array(
-                        'U_DOWNLOAD'        => $this->controller_helper->route('paul999_downloadpage_download', array('id' => $int_row['download_id'])),
-                        'NAME'              => $int_row['name'],
-                        'S_FULL_PACKAGE'    => $int_row['type'] == constants::FULL_PACKAGE,
-                        'S_LANGPACK'        => $int_row['type'] == constants::TRANSLATION,
-                        'S_UPDATE_PACK'     => $int_row['type'] == constants::UPDATE_PACKAGE,
+                        'U_DOWNLOAD'            => $this->controller_helper->route('paul999_downloadpage_download', array('id' => $int_row['download_id'])),
+                        'NAME'                  => $int_row['name'],
+                        'S_FULL_PACKAGE'        => $int_row['type'] == constants::FULL_PACKAGE,
+                        'S_LANG_PACKAGE'        => $int_row['type'] == constants::TRANSLATION,
+                        'S_UPDATE_PACKAGE'      => $int_row['type'] == constants::UPDATE_PACKAGE,
                     ));
                 }
                 $this->db->sql_freeresult($int_result);
