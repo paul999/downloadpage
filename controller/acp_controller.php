@@ -112,16 +112,21 @@ class acp_controller
 
         while($row = $this->db->sql_fetchrow($result))
         {
+            $sql = 'SELECT COUNT(version_id) as number FROM ' . $this->releases_table . ' WHERE version_id = ' . $row['version_id'];
+            $int_result = $this->db->sql_query($sql);
+            $fetch = $this->db->sql_fetchfield('number', $int_result);
+            $this->db->sql_freeresult($int_result);
+
             $this->template->assign_block_vars('versions', array(
                 'NAME'      => $row['name'],
                 'ACTIVE'    => $row['active'],
-                'COUNT'     => 0,
+                'COUNT'     => $fetch,
             ));
         }
         $this->db->sql_freeresult($result);
 
         $this->template->assign_vars(array(
-
+            'VERSIONS_MAIN' => true,
         ));
     }
 
