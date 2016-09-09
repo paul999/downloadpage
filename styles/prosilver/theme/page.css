@@ -67,3 +67,8 @@
 .download_heading_img {
     background-image: url("images/t_downloads.gif");
 }
+
+.always_current {
+    font-size:0.9em;
+    margin-top:-5px;
+}

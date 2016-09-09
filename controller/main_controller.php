@@ -102,15 +102,18 @@ class main_controller
      */
     public function main()
     {
+        $this->lang->add_lang('common', 'paul999/downloadpage');
         $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE active = 1 ORDER BY sort DESC';
 
         $result = $this->db->sql_query($sql);
         while ($row = $this->db->sql_fetchrow($result))
         {
             $this->template->assign_block_vars('releases', array(
-                'NAME'  => $row['name'],
-                'EOL'   => $row['eol'],
-                'L_EOL' => $this->lang->lang('PHPBB_EOL', $row['name']),
+                'NAME'                       => $row['name'],
+                'EOL'                        => $row['eol'],
+                'L_EOL'                      => $this->lang->lang('PHPBB_EOL', $row['name']),
+                'L_ALWAYS_CURRENT_DOWNLOAD'  => $this->lang->lang('ALWAYS_CURRENT', ''),
+                'L_ALWAYS_CURRENT_UPDATE'    => $this->lang->lang('ALWAYS_CURRENT', ''),
             ));
 
             // Yes, we do a queries in a loop here.

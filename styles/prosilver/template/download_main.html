@@ -31,13 +31,13 @@
                             </div>
                         </div>
                         <p class="download_small">{L_USE_NEW_INSTALLATION}
-                            Gebruik dit pakket voor een nieuwe installatie.
-                            <br>
-                            <br>
+                            <br />
+                            <br />
                         </p>
                         <!-- IF !releases.versions.S_LAST_ROW -->
                             <h2>{L_PREVIOUS_VERSIONS}</h2>
-                            <ul>
+                            <p class="always_current">{release.L_ALWAYS_CURRENT_DOWNLOAD}</p>
+                            <ul style="display: none" id="download{releases.RELEASE_ID}">
                         <!-- ENDIF -->
                     <!-- ELSE -->
                         <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
@@ -83,12 +83,12 @@
                             </div>
                         </div>
                         <p class="download_small">{L_USE_UPDATE_INSTALLATION}
-                            Gebruik dit pakket voor een nieuwe installatie.
-                            <br>
-                            <br>
+                            <br />
+                            <br />
                         </p>
                         <!-- IF !releases.versions.S_LAST_ROW -->
                         <h2>{L_PREVIOUS_VERSIONS}</h2>
+                        <p class="always_current">{release.L_ALWAYS_CURRENT_UPDATE}</p>
                                 <ul>
                         <!-- ENDIF -->
                     <!-- ELSE -->
