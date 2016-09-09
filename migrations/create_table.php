@@ -36,6 +36,7 @@ class create_table extends \phpbb\db\migration\migration
                         'version_id'    => array('UINT', 0),
                         'name'          => array('VCHAR:255', 0),
                         'release_time'  => array('TIMESTAMP', 0),
+                        'active'        => array('TINT:1', 1),
                     ),
                     'PRIMARY_KEY' => 'release_id',
                     'KEYS'        => array(
@@ -52,6 +53,7 @@ class create_table extends \phpbb\db\migration\migration
                         'type'          => array('UINT', 0),
                         'filename'      => array('VCHAR:255', ''),
                         'filelocation'  => array('VCHAR:255', ''),
+                        'active'        => array('TINT:1', 1),
                     ),
                     'PRIMARY_KEY' => 'download_id',
                     'KEYS'        => array(

@@ -113,7 +113,7 @@ class main_controller
 
             // Yes, we do a queries in a loop here.
             // However, as the versions table should have <= 3 versions this should be fine.
-            $sql_row = 'SELECT * FROM ' . $this->releases_table . ' WHERE version_id = ' . $row['version_id'] . ' ORDER BY release_time DESC';
+            $sql_row = 'SELECT * FROM ' . $this->releases_table . ' WHERE version_id = ' . $row['version_id'] . ' AND active = 1 ORDER BY release_time DESC';
             $result_row = $this->db->sql_query($sql_row);
 
             while ($row_row = $this->db->sql_fetchrow($result_row))
@@ -122,15 +122,15 @@ class main_controller
                     'RELEASED_AT'   => $this->lang->lang('RELEASED_AT', $this->user->format_date($row_row['release_time'])),
                 ));
 
-                $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE release_id = ' . (int)$row_row['release_id'];
+                $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE active = 1 AND release_id = ' . (int)$row_row['release_id'];
 
                 $int_result = $this->db->sql_query($sql);
 
                 while($int_row = $this->db->sql_fetchrow($int_result))
                 {
                     $this->template->assign_block_vars('releases.versions.downloads', array(
-                        'U_DOWNLOAD'        => '',
-                        'U_NAME'            => $int_row['name'],
+                        'U_DOWNLOAD'        => $this->controller_helper->route('paul999_downloadpage_download', array('id' => $int_row['download_id'])),
+                        'NAME'              => $int_row['name'],
                         'S_FULL_PACKAGE'    => $int_row['type'] == constants::FULL_PACKAGE,
                     ));
                 }
