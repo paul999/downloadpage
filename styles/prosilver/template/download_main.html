@@ -59,47 +59,44 @@
             <!-- END releases.versions.downloads -->
         <!-- END releases.versions -->
     </div>
-<!-- END releases -->
 
+    <div class="middle">
+        <h2>{L_UPDATE_PHPBB} {releases.NAME}</h2>
 
-<!-- BEGIN releases -->
-<div class="middle">
-    <h2>{L_UPDATE_PHPBB} {releases.NAME}</h2>
-
-    <!-- BEGIN releases.versions -->
-        <!-- BEGIN releases.versions.downloads -->
-            <!-- IF releases.versions.downloads.S_UPDATE_PACKAGE -->
-                <!-- IF releases.versions.S_FIRST_ROW -->
-                    <div class="download color_5">
-                        <h2>{L_UPDATE_PACKAGE}</h2>
-                        <div>
-                            <a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a>
-                            <br />
-                            <small class="small_left">{releases.versions.RELEASED_AT}</small>
-                            <small class="small_right">&nbsp;</small>
+        <!-- BEGIN releases.versions -->
+            <!-- BEGIN releases.versions.downloads -->
+                <!-- IF releases.versions.downloads.S_UPDATE_PACKAGE -->
+                    <!-- IF releases.versions.S_FIRST_ROW -->
+                        <div class="download color_5">
+                            <h2>{L_UPDATE_PACKAGE}</h2>
+                            <div>
+                                <a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a>
+                                <br />
+                                <small class="small_left">{releases.versions.RELEASED_AT}</small>
+                                <small class="small_right">&nbsp;</small>
+                            </div>
                         </div>
-                    </div>
-                    <p class="download_small">{L_USE_UPDATE_INSTALLATION}
-                        Gebruik dit pakket voor een nieuwe installatie.
-                        <br>
-                        <br>
-                    </p>
-                    <!-- IF !releases.versions.S_LAST_ROW -->
-                    <h2>{L_PREVIOUS_VERSIONS}</h2>
-                            <ul>
+                        <p class="download_small">{L_USE_UPDATE_INSTALLATION}
+                            Gebruik dit pakket voor een nieuwe installatie.
+                            <br>
+                            <br>
+                        </p>
+                        <!-- IF !releases.versions.S_LAST_ROW -->
+                        <h2>{L_PREVIOUS_VERSIONS}</h2>
+                                <ul>
+                        <!-- ENDIF -->
+                    <!-- ELSE -->
+                        <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
                     <!-- ENDIF -->
-                <!-- ELSE -->
-                    <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
-                <!-- ENDIF -->
 
-                <!-- IF !releases.versions.S_FIRST_ROW and releases.versions.S_LAST_ROW -->
-                    </ul>
+                    <!-- IF !releases.versions.S_FIRST_ROW and releases.versions.S_LAST_ROW -->
+                        </ul>
+                    <!-- ENDIF -->
                 <!-- ENDIF -->
-            <!-- ENDIF -->
-        <!-- END releases.versions.downloads -->
-    <!-- END releases.versions -->
-</div>
-<div style="clear: both"></div>
+            <!-- END releases.versions.downloads -->
+        <!-- END releases.versions -->
+    </div>
+    <div style="clear: both"></div>
 <!-- END releases -->
 
 <!-- INCLUDE overall_footer.html -->
