@@ -113,16 +113,16 @@ class main_controller
 
             // Yes, we do a queries in a loop here.
             // However, as the versions table should have <= 3 versions this should be fine.
-            $sql_row = 'SELECT * FROM ' . $this->releases_table . ' WHERE version_id = ' . $row['version_id'] . ' ORDER BY release_time';
+            $sql_row = 'SELECT * FROM ' . $this->releases_table . ' WHERE version_id = ' . $row['version_id'] . ' ORDER BY release_time DESC';
             $result_row = $this->db->sql_query($sql_row);
 
             while ($row_row = $this->db->sql_fetchrow($result_row))
             {
                 $this->template->assign_block_vars('releases.versions', array(
-                    'RELEASED_AT'   => $this->lang->lang('RELEASED_AT', $this->user->format_date($row_row['release_times'])),
+                    'RELEASED_AT'   => $this->lang->lang('RELEASED_AT', $this->user->format_date($row_row['release_time'])),
                 ));
 
-                $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE release_id = ' . (int)$row_row['release_id'] . ' ORDER BY release_time DESC';
+                $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE release_id = ' . (int)$row_row['release_id'];
 
                 $int_result = $this->db->sql_query($sql);
 
