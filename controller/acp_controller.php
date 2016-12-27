@@ -122,6 +122,7 @@ class acp_controller
             break;
             case 'delete':
                 $this->delete($id);
+            break;
             case 'addRelease':
                 $this->createNewRelease();
         }
@@ -149,6 +150,7 @@ class acp_controller
                 'L_ACTIVATE_DEACTIVATE' => $this->lang->lang($row['active'] ? 'DEACTIVATE' : 'ACTIVATE'),
                 'U_ACTIVATE_DEACTIVATE'	=> $this->u_action . "&amp;id={$row['version_id']}&amp;action=" . ($row['active'] ? 'deactivate' : 'activate'),
                 'U_DELETE'              => $this->u_action . '&amp;action=delete&amp;id=' . $row['version_id'],
+                'U_NEW_RELEASE'         => $this->u_action . '&amp;action=addRelease&amp;version_id=' . $row['version_id'],
             ));
         }
         $this->db->sql_freeresult($result);
@@ -181,7 +183,7 @@ class acp_controller
                 $json_response = new \phpbb\json_response;
                 $json_response->send(array(
                     'MESSAGE_TITLE'	=> $this->lang->lang('INFORMATION'),
-                    'MESSAGE_TEXT'	=> $this->lang->lang('BBCODE_DELETED'),
+                    'MESSAGE_TEXT'	=> $this->lang->lang('VERSION_DELETED'),
                     'REFRESH_DATA'	=> array(
                         'time'	=> 3
                     )
@@ -248,13 +250,6 @@ class acp_controller
      *
      */
     private function createNewRelease() {
-
-    }
-
-    /**
-     *
-     */
-    public function releases() {
 
     }
 
