@@ -292,7 +292,7 @@ class acp_controller
         $sql_ary = [
             'version_id'    => $version_id,
             'name'          => $this->request->variable('name', ''),
-            'version_time'  => strtotime($this->request->variable('date', '')),
+            'release_time'  => strtotime($this->request->variable('date', '')),
             'active'        => $this->request->is_set_post('active'),
 
         ];
