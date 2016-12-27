@@ -3,5 +3,5 @@ paul999_downloadpage_main:
     defaults: { _controller: paul999.downloadpage.controller:main }
 
 paul999_downloadpage_download:
-    pattern: /downloads/{id}
+    pattern: /downloads/{id}/{name}.zip
     defaults: { _controller: paul999.downloadpage.controller:download }

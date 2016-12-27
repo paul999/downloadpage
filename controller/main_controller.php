@@ -134,7 +134,10 @@ class main_controller
                 while($int_row = $this->db->sql_fetchrow($int_result))
                 {
                     $this->template->assign_block_vars('releases.versions.downloads', array(
-                        'U_DOWNLOAD'            => $this->controller_helper->route('paul999_downloadpage_download', array('id' => $int_row['download_id'])),
+                        'U_DOWNLOAD'            => $this->controller_helper->route('paul999_downloadpage_download', array(
+                            'id' => $int_row['download_id'],
+                            'name'  => str_replace('.zip', '', $int_row['filename']),
+                        )),
                         'NAME'                  => $int_row['name'],
                         'S_FULL_PACKAGE'        => $int_row['type'] == constants::FULL_PACKAGE,
                         'S_LANG_PACKAGE'        => $int_row['type'] == constants::TRANSLATION,
@@ -152,10 +155,10 @@ class main_controller
     /**
      * Return a download.
      * @param int $id
-     * @throws http_exception
+     * @param $name
      * @return BinaryFileResponse
      */
-    public function download($id)
+    public function download($id, $name)
     {
         $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE download_id = ' . (int)$id;
         $result = $this->db->sql_query($sql);

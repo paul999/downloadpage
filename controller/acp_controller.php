@@ -314,6 +314,7 @@ class acp_controller
                 array_merge($error, $result->error);
                 continue;
             }
+            $result->clean_filename();
             $result->move_file('files/');
 
 
