@@ -109,8 +109,9 @@ class acp_controller
             case 'add':
                 $this->addVersion();
             break;
-            case 'active':
-                $this->activate($id, $this->request->is_set('active'));
+            case 'activate':
+            case 'deactivate':
+                $this->activate($id, $action == 'activate');
             break;
             case 'addRelease':
                 $this->createNewRelease();
@@ -133,9 +134,10 @@ class acp_controller
             $this->db->sql_freeresult($int_result);
 
             $this->template->assign_block_vars('versions', array(
-                'NAME'      => $row['name'],
-                'ACTIVE'    => $row['active'],
-                'COUNT'     => $fetch,
+                'NAME'                  => $row['name'],
+                'ACTIVE'                => $row['active'],
+                'COUNT'                 => $fetch,
+                'L_ACTIVATE_DEACTIVATE' => $this->lang->lang($row['active'] ? 'DEACTIVATE' : 'ACTIVATE'),
             ));
         }
         $this->db->sql_freeresult($result);

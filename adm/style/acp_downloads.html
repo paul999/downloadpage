@@ -32,10 +32,17 @@
             {versions.COUNT}
         </td>
         <td style="text-align: center;">
-
+            <!-- IF versions.ACTIVE -->{L_YES}<!-- ELSE --> {L_NO}<!-- ENDIF -->
         </td>
-        <td style="text-align: center;">
-
+        <td >
+        <td style="text-align: center;" class="actions">
+            <span class="up-disabled" style="display:none;">{ICON_MOVE_UP_DISABLED}</span>
+            <span class="up"><a href="{versions.U_MOVE_UP}" data-ajax="row_up" data-overlay="false">{ICON_MOVE_UP}</a></span>
+            <span class="down-disabled" style="display:none;">{ICON_MOVE_DOWN_DISABLED}</span>
+            <span class="down"><a href="{versions.U_MOVE_DOWN}" data-ajax="row_down" data-overlay="false">{ICON_MOVE_DOWN}</a></span>
+            <a href="{versions.U_EDIT}">{ICON_EDIT}</a>
+            <a href="{versions.U_DELETE}" data-ajax="row_delete">{ICON_DELETE}</a>
+        <a href="{versions.U_ACTIVATE}" data-ajax="activate_deactivate">{versions.L_ACTIVATE_DEACTIVATE}</a>
         </td>
     </tr>
     <!-- END versions -->
