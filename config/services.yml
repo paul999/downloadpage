@@ -29,5 +29,8 @@ services:
 
     paul999.downloadpage.listener:
         class: paul999\downloadpage\event\main_listener
+        arguments:
+          - '@template'
+          - '@controller.helper'
         tags:
             - { name: event.listener }
