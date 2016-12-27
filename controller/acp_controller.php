@@ -136,6 +136,14 @@ class acp_controller
     }
 
     /**
+     * @param string $u_action
+     */
+    public function setUAction($u_action)
+    {
+        $this->u_action = $u_action;
+    }
+
+    /**
      *
      */
     private function versionsIndex() {
@@ -268,6 +276,9 @@ class acp_controller
         if (!$row) {
             trigger_error('NO_VERSION_FOUND', E_USER_ERROR);
         }
+        if ($this->request->is_set_post('submit')) {
+            $this->handleCreateNewRelease($version_id);
+        }
 
         $this->template->assign_vars([
             'ADD_NEW_RELEASE'   => true,
@@ -276,11 +287,51 @@ class acp_controller
 
     }
 
-    /**
-     * @param string $u_action
-     */
-    public function setUAction($u_action)
+    private function handleCreateNewRelease($version_id)
     {
-        $this->u_action = $u_action;
+        $sql_ary = [
+            'version_id'    => $version_id,
+            'name'          => $this->request->variable('name', ''),
+            'version_time'  => strtotime($this->request->variable('date', '')),
+            'active'        => $this->request->is_set_post('active'),
+
+        ];
+        $sql = 'INSERT INTO ' . $this->releases_table . ' ' . $this->db->sql_build_array('INSERT', $sql_ary);
+        $this->db->sql_query($sql);
+        $id = (int)$this->db->sql_nextid();
+
+        $sql_ary = [
+
+        ];
+        $error = [];
+        $this->upload->set_allowed_extensions(['zip']);
+        foreach (['full_package', 'update', 'translation'] as $name) {
+            $result = $this->upload->handle_upload('files.types.form', $name . '_upload');
+            $this->upload->common_checks($result);
+
+            if (sizeof($result->error)) {
+                array_merge($error, $result->error);
+                continue;
+            }
+            $result->move_file('files/');
+
+
+            $sql_ary[] = [
+                'release_id'    => $id,
+                'name'          => $this->request->variable($name . '_name', ''),
+                'active'        => $this->request->is_set_post($name . '_active'),
+                'filename'      => $result->get('uploadname'),
+                'filelocation'  => $result->get('realname'),
+            ];
+        }
+        $this->db->sql_multi_insert($this->downloads_table, $sql_ary);
+
+        if ($error) {
+            // TODO: Handle errors properly. NOTE: A release is arleady created!
+            var_dump($error);
+            exit;
+        }
+
+        trigger_error('RELEASE_CREATED', E_USER_NOTICE);
     }
 }
