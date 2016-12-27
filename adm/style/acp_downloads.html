@@ -62,5 +62,90 @@
 </form>
 <!-- ENDIF -->
 
+<!-- IF ADD_NEW_RELEASE -->
+<form id="release" method="post" action="{U_ACTION}"  enctype="multipart/form-data">
+    <fieldset>
+        <legend>{L_RELEASE_INFORMATION}</legend>
+        <dl>
+            <dt><label for="name">{L_RELEASE_NAME}{L_COLON}</label></dt>
+            <dd><input type="text" name="name" id="name" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="active">{L_RELEASE_ACTIVE}{L_COLON}</label></dt>
+            <dd><input type="checkbox" name="active" value="1" id="active" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="date">{L_RELEASE_DATE}{L_COLON}</label></dt>
+            <dd><input type="date" name="date" id="date" /> </dd>
+        </dl>
+    </fieldset>
 
+    <fieldset>
+        <legend>{L_FULL_PACKAGE}</legend>
+        <dl>
+            <dt><label for="full_package_name">{L_DOWNLOAD_NAME}{L_COLOL}</label></dt>
+            <dd><input type="text" name="full_package_name" id="full_package_name" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="full_package_description">{L_DOWNLOAD_DESCRIPTION}{L_COLOL}</label></dt>
+            <dd><textarea name="full_package_description" id="full_package_description"></textarea> </dd>
+        </dl>
+        <dl>
+            <dt><label for="full_package_active">{L_PACKAGE_ACTIVE}{L_COLON}</label></dt>
+            <dd><input type="checkbox" name="full_package_active" value="1" id="full_package_active" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="full_package_upload">{L_PACKAGE}</label></dt>
+            <dd><input type="file" name="full_package_upload"  id="full_package_upload" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>{L_TRANSLATION_PACKAGE}</legend>
+        <dl>
+            <dt><label for="translation_name">{L_DOWNLOAD_NAME}{L_COLOL}</label></dt>
+            <dd><input type="text" name="translation_name" id="translation_name" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="translation_description">{L_DOWNLOAD_DESCRIPTION}{L_COLOL}</label></dt>
+            <dd><textarea name="translation_description" id="translation_description"></textarea> </dd>
+        </dl>
+        <dl>
+            <dt><label for="translation_active">{L_PACKAGE_ACTIVE}{L_COLON}</label></dt>
+            <dd><input type="checkbox" name="translation_active" value="1" id="translation_active" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="translation_upload">{L_PACKAGE}</label></dt>
+            <dd><input type="file" name="translation_upload"  id="translation_upload" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset>
+        <legend>{L_UPDATE_PACKAGE}</legend>
+        <dl>
+            <dt><label for="update_name">{L_DOWNLOAD_NAME}{L_COLOL}</label></dt>
+            <dd><input type="text" name="update_name" id="update_name" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="update_description">{L_DOWNLOAD_DESCRIPTION}{L_COLOL}</label></dt>
+            <dd><textarea name="update_description" id="update_description"></textarea> </dd>
+        </dl>
+        <dl>
+            <dt><label for="update_active">{L_PACKAGE_ACTIVE}{L_COLON}</label></dt>
+            <dd><input type="checkbox" name="update_active" value="1" id="update_active" /> </dd>
+        </dl>
+        <dl>
+            <dt><label for="update_upload">{L_PACKAGE}</label></dt>
+            <dd><input type="file" name="update_upload"  id="update_upload" /></dd>
+        </dl>
+    </fieldset>
+
+    <fieldset class="submit-buttons">
+        <legend>{L_SUBMIT}</legend>
+        <input class="button1" type="submit" id="submit" name="update" value="{L_SUBMIT}" />&nbsp;
+        <input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+        {S_FORM_TOKEN}
+    </fieldset>
+</form>
+<!-- ENDIF -->
 <!-- INCLUDE overall_footer.html -->

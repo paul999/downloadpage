@@ -125,8 +125,14 @@ class acp_controller
             break;
             case 'addRelease':
                 $this->createNewRelease();
+                return;
         }
         $this->versionsIndex();
+    }
+
+    public function releases() {
+        $action = $this->request->variable('action', '');
+        $id = $this->request->variable('id', 0);
     }
 
     /**
@@ -244,12 +250,24 @@ class acp_controller
         $this->db->sql_query($sql);
 
         $this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_VERSION_ADD', false, [$name]);
+        redirect($this->u_action);
     }
 
     /**
      *
      */
     private function createNewRelease() {
+        $version_id = $this->request->variable('version_id', 0);
+
+        $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE version_id = ' . $version_id;
+        $result = $this->db->sql_query($sql);
+        $row = $this->db->sql_fetchrow($result);
+
+        $this->db->sql_freeresult($result);
+
+        if (!$row) {
+            trigger_error('NO_VERSION_FOUND', E_USER_ERROR);
+        }
 
     }
 
