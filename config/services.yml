@@ -23,6 +23,8 @@ services:
           - '@dbal.conn'
           - '@template'
           - '@files.upload'
+          - '@language'
+          - '@log'
           - '%paul999.downloadpage.tables.downloads%'
           - '%paul999.downloadpage.tables.versions%'
           - '%paul999.downloadpage.tables.releases%'

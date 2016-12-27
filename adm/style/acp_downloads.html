@@ -6,6 +6,12 @@
 
 <p>{L_VERSIONS_ADMIN_EXPLAIN}</p>
 
+<!-- IF ERROR_MSG -->
+<div class="errorbox">
+    <h3>{L_WARNING}</h3>
+    <p>{ERROR_MSG}</p>
+</div>
+<!-- ENDIF -->
 
 <table class="table1">
     <col class="row1" ><col class="row1" ><col class="row2" ><col class="row2" >
@@ -35,6 +41,18 @@
     <!-- END versions -->
     </tbody>
 </table>
+
+
+<form id="new_forum" method="post" action="{U_ACTION}">
+
+    <fieldset class="quick">
+        <input type="hidden" name="action" value="add" />
+
+        <input type="text" name="name" value="" maxlength="255" />
+        <input class="button2" name="add" type="submit" value="{L_ADD_VERSION}" />
+        {S_FORM_TOKEN}
+    </fieldset>
+</form>
 <!-- ENDIF -->
 
 
