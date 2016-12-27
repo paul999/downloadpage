@@ -11,15 +11,28 @@
 namespace paul999\downloadpage\event;
 
 
+use phpbb\controller\helper;
+
 class main_listener implements \Symfony\Component\EventDispatcher\EventSubscriberInterface
 {
+    /**
+     * @var \phpbb\template\template
+     */
+    private $template;
+    /**
+     * @var helper
+     */
+    private $helper;
 
     /**
      * main_listener constructor.
-     *
+     * @param \phpbb\template\template $template
+     * @param helper $helper
      */
-    public function __construct()
+    public function __construct(\phpbb\template\template $template, helper $helper)
     {
+        $this->template = $template;
+        $this->helper = $helper;
     }
 
     /**
@@ -43,7 +56,13 @@ class main_listener implements \Symfony\Component\EventDispatcher\EventSubscribe
     public static function getSubscribedEvents()
     {
         return array(
-
+            'core.page_header'						=> 'show_page_links',
         );
+    }
+
+    public function show_page_links() {
+        $this->template->assign_vars([
+            'U_DOWNLOAD'			=> $this->helper->route('paul999_downloadpage_main'),
+        ]);
     }
 }

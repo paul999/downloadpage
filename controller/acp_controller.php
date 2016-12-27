@@ -95,6 +95,7 @@ class acp_controller
                 break;
             case 'active':
                 $this->activate($id, $this->request->is_set('active'));
+                break;
             case 'addRelease':
                 $this->createNewRelease();
                 break;

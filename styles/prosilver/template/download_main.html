@@ -1,111 +1,111 @@
 <!-- INCLUDECSS @paul999_downloadpage/page.css -->
 <!-- INCLUDE overall_header.html -->
-
-<div class="double">
-    <div class="download_heading_img heading_img">
-        <h1>{L_DOWNLOADS}</h1>
-    </div>
-    {L_PHPBB_FREE_IN_USE}
-<!-- BEGIN releases -->
-    <!-- IF releases.EOL -->
-        <div style="padding-top:0px" class="news">
-            <h2>{L_VERSION_EOL}</h2>
-            <p>{releases.L_EOL}</p>
+<div class="site_css">
+    <div class="double">
+        <div class="download_heading_img heading_img">
+            <h1>{L_DOWNLOADS}</h1>
         </div>
-    <!-- ENDIF -->
-    <div class="left">
-        <h2>{L_DOWNLOAD_PHPBB} {releases.NAME}</h2>
+        {L_PHPBB_FREE_IN_USE}
+    <!-- BEGIN releases -->
+        <!-- IF releases.EOL -->
+            <div style="padding-top:0px" class="news">
+                <h2>{L_VERSION_EOL}</h2>
+                <p>{releases.L_EOL}</p>
+            </div>
+        <!-- ENDIF -->
+        <div class="left">
+            <h2>{L_DOWNLOAD_PHPBB} {releases.NAME}</h2>
 
-        <!-- BEGIN releases.versions -->
-            <!-- BEGIN releases.versions.downloads -->
-                <!-- IF releases.versions.downloads.S_FULL_PACKAGE -->
-                    <!-- IF releases.versions.S_FIRST_ROW -->
-                        <div class="download color_6">
-                            <h2>{L_FULL_PACKAGE}</h2>
-                            <div>
-                                <a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a>
-                                <br />
-                                <small class="small_left">{releases.versions.RELEASED_AT}</small>
-                                <small class="small_right">&nbsp;</small>
+            <!-- BEGIN releases.versions -->
+                <!-- BEGIN releases.versions.downloads -->
+                    <!-- IF releases.versions.downloads.S_FULL_PACKAGE -->
+                        <!-- IF releases.versions.S_FIRST_ROW -->
+                            <div class="download color_6">
+                                <h2>{L_FULL_PACKAGE}</h2>
+                                <div>
+                                    <a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a>
+                                    <br />
+                                    <small class="small_left">{releases.versions.RELEASED_AT}</small>
+                                    <small class="small_right">&nbsp;</small>
+                                </div>
                             </div>
-                        </div>
-                        <p class="download_small">{L_USE_NEW_INSTALLATION}
-                            <br />
-                            <br />
-                        </p>
-                        <!-- IF !releases.versions.S_LAST_ROW -->
+                            <p class="download_small">{L_USE_NEW_INSTALLATION}
+                                <br />
+                                <br />
+                            </p>
+                            <!-- IF !releases.versions.S_LAST_ROW -->
+                                <h2>{L_PREVIOUS_VERSIONS}</h2>
+                                <p class="always_current">{releases.L_ALWAYS_CURRENT_DOWNLOAD}</p>
+                                <ul style="display: none" id="download{releases.RELEASE_ID}">
+                            <!-- ENDIF -->
+                        <!-- ELSE -->
+                            <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
+                        <!-- ENDIF -->
+
+                        <!-- IF !releases.versions.S_FIRST_ROW and releases.versions.S_LAST_ROW -->
+                            </ul>
+                        <!-- ENDIF -->
+                    <!-- ENDIF -->
+                <!-- END releases.versions.downloads -->
+            <!-- END releases.versions -->
+
+            <!-- BEGIN releases.versions -->
+                <!-- BEGIN releases.versions.downloads -->
+                    <!-- IF releases.versions.downloads.S_LANG_PACKAGE -->
+                        <!-- IF releases.versions.S_FIRST_ROW -->
+                            <h2>{L_LANG_PACKS}</h2>
+                            <ul>
+                        <!-- ENDIF -->
+                        <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
+                        <!-- IF releases.versions.S_LAST_ROW -->
+                            </ul>
+                        <!-- ENDIF -->
+                    <!-- ENDIF -->
+                <!-- END releases.versions.downloads -->
+            <!-- END releases.versions -->
+        </div>
+
+        <div class="middle">
+            <h2>{L_UPDATE_PHPBB} {releases.NAME}</h2>
+
+            <!-- BEGIN releases.versions -->
+                <!-- BEGIN releases.versions.downloads -->
+                    <!-- IF releases.versions.downloads.S_UPDATE_PACKAGE -->
+                        <!-- IF releases.versions.S_FIRST_ROW -->
+                            <div class="download color_5">
+                                <h2>{L_UPDATE_PACKAGE}</h2>
+                                <div>
+                                    <a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a>
+                                    <br />
+                                    <small class="small_left">{releases.versions.RELEASED_AT}</small>
+                                    <small class="small_right">&nbsp;</small>
+                                </div>
+                            </div>
+                            <p class="download_small">{L_USE_UPDATE_INSTALLATION}
+                                <br />
+                                <br />
+                            </p>
+                            <!-- IF !releases.versions.S_LAST_ROW -->
                             <h2>{L_PREVIOUS_VERSIONS}</h2>
-                            <p class="always_current">{releases.L_ALWAYS_CURRENT_DOWNLOAD}</p>
-                            <ul style="display: none" id="download{releases.RELEASE_ID}">
+                            <p class="always_current">{releases.L_ALWAYS_CURRENT_UPDATE}</p>
+                                    <ul>
+                            <!-- ENDIF -->
+                        <!-- ELSE -->
+                            <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
                         <!-- ENDIF -->
-                    <!-- ELSE -->
-                        <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
-                    <!-- ENDIF -->
 
-                    <!-- IF !releases.versions.S_FIRST_ROW and releases.versions.S_LAST_ROW -->
-                        </ul>
-                    <!-- ENDIF -->
-                <!-- ENDIF -->
-            <!-- END releases.versions.downloads -->
-        <!-- END releases.versions -->
-
-        <!-- BEGIN releases.versions -->
-            <!-- BEGIN releases.versions.downloads -->
-                <!-- IF releases.versions.downloads.S_LANG_PACKAGE -->
-                    <!-- IF releases.versions.S_FIRST_ROW -->
-                        <h2>{L_LANG_PACKS}</h2>
-                        <ul>
-                    <!-- ENDIF -->
-                    <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
-                    <!-- IF releases.versions.S_LAST_ROW -->
-                        </ul>
-                    <!-- ENDIF -->
-                <!-- ENDIF -->
-            <!-- END releases.versions.downloads -->
-        <!-- END releases.versions -->
-    </div>
-
-    <div class="middle">
-        <h2>{L_UPDATE_PHPBB} {releases.NAME}</h2>
-
-        <!-- BEGIN releases.versions -->
-            <!-- BEGIN releases.versions.downloads -->
-                <!-- IF releases.versions.downloads.S_UPDATE_PACKAGE -->
-                    <!-- IF releases.versions.S_FIRST_ROW -->
-                        <div class="download color_5">
-                            <h2>{L_UPDATE_PACKAGE}</h2>
-                            <div>
-                                <a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a>
-                                <br />
-                                <small class="small_left">{releases.versions.RELEASED_AT}</small>
-                                <small class="small_right">&nbsp;</small>
-                            </div>
-                        </div>
-                        <p class="download_small">{L_USE_UPDATE_INSTALLATION}
-                            <br />
-                            <br />
-                        </p>
-                        <!-- IF !releases.versions.S_LAST_ROW -->
-                        <h2>{L_PREVIOUS_VERSIONS}</h2>
-                        <p class="always_current">{releases.L_ALWAYS_CURRENT_UPDATE}</p>
-                                <ul>
+                        <!-- IF !releases.versions.S_FIRST_ROW and releases.versions.S_LAST_ROW -->
+                            </ul>
                         <!-- ENDIF -->
-                    <!-- ELSE -->
-                        <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
                     <!-- ENDIF -->
+                <!-- END releases.versions.downloads -->
+            <!-- END releases.versions -->
+        </div>
+        <div style="clear: both"></div>
+    <!-- END releases -->
 
-                    <!-- IF !releases.versions.S_FIRST_ROW and releases.versions.S_LAST_ROW -->
-                        </ul>
-                    <!-- ENDIF -->
-                <!-- ENDIF -->
-            <!-- END releases.versions.downloads -->
-        <!-- END releases.versions -->
+    <!-- EVENT paul999_downloadpage_bottompage -->
+
     </div>
-    <div style="clear: both"></div>
-<!-- END releases -->
-
-<!-- EVENT paul999_downloadpage_bottompage -->
-
 </div>
-
 <!-- INCLUDE overall_footer.html -->
