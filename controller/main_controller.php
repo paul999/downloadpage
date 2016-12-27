@@ -120,17 +120,19 @@ class main_controller
             // However, as the versions table should have <= 3 versions this should be fine.
             $sql_row = 'SELECT * FROM ' . $this->releases_table . ' WHERE version_id = ' . $row['version_id'] . ' AND active = 1 ORDER BY release_time DESC';
             $result_row = $this->db->sql_query($sql_row);
+            $first = true;
 
             while ($row_row = $this->db->sql_fetchrow($result_row))
             {
                 $this->template->assign_block_vars('releases.versions', array(
                     'RELEASED_AT'   => $this->lang->lang('RELEASED_AT', $this->user->format_date($row_row['release_time'])),
+                    'FIRST_ROW'             => $first,
                 ));
+                $first = false;
 
                 $sql = 'SELECT * FROM ' . $this->downloads_table . ' WHERE active = 1 AND release_id = ' . (int)$row_row['release_id'];
 
                 $int_result = $this->db->sql_query($sql);
-                $first = true;
 
                 while($int_row = $this->db->sql_fetchrow($int_result))
                 {
@@ -143,9 +145,7 @@ class main_controller
                         'S_FULL_PACKAGE'        => $int_row['type'] == constants::FULL_PACKAGE,
                         'S_LANG_PACKAGE'        => $int_row['type'] == constants::TRANSLATION,
                         'S_UPDATE_PACKAGE'      => $int_row['type'] == constants::UPDATE_PACKAGE,
-                        'FIRST_ROW'             => $first,
                     ));
-                    $first = false;
                 }
                 $this->db->sql_freeresult($int_result);
             }
