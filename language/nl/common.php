@@ -45,10 +45,11 @@ $lang = array_merge(
         'USE_NEW_INSTALLATION'      => 'Gebruik dit pakket voor een nieuwe installatie.',
         'USE_UPDATE_INSTALLATION'   => 'De aanbevolen update methode, werkt ook de Nederlandse vertaling bij.',
         'PREVIOUS_VERSIONS'         => 'Vorige versies',
-        'ALWAYS_CURRENT'            => 'Installeer altijd de laatste versie. Mocht je toch opzoek zijn naar oudere versies, <a href="%s">klik dan hier</a>.',
+        'ALWAYS_CURRENT'            => 'Installeer altijd de laatste versie. Mocht je toch op zoek zijn naar oudere versies, dan kan je deze hieronder downloaden',
         'LANG_PACKS'                => 'Nederlandse vertaling',
 
         'VERSION_EOL'       => 'Versie End of Life',
         'PHPBB_EOL'         => 'Let op: phpBB %s is End of Life en zal binnenkort niet meer ondersteund worden. Het is aangeraden om te upgraden naar 1 van de bovenstaande versies.',
+        'RELEASED_AT'       => 'Vrijgegeven op %s',
     )
 );
