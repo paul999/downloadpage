@@ -204,7 +204,7 @@ class acp_controller
      * @param boolean $active
      */
     private function activate($id, $active) {
-        $sql = 'UPDATE ' . $this->versions_table . ' SET active = ' . (int)$active . ' WHERE release_id = ' . (int)$id;
+        $sql = 'UPDATE ' . $this->versions_table . ' SET active = ' . (int)$active . ' WHERE version_id = ' . (int)$id;
         $this->db->sql_query($sql);
 
         $json_response = new \phpbb\json_response;
