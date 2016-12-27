@@ -282,7 +282,7 @@ class acp_controller
 
         $this->template->assign_vars([
             'ADD_NEW_RELEASE'   => true,
-            'U_ACTION'          => $this->u_action,
+            'U_ACTION'          => $this->u_action . '&action=addRelease&amp;version_id=' . $version_id,
         ]);
 
     }
