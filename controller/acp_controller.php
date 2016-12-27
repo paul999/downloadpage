@@ -269,6 +269,11 @@ class acp_controller
             trigger_error('NO_VERSION_FOUND', E_USER_ERROR);
         }
 
+        $this->template->assign_vars([
+            'ADD_NEW_RELEASE'   => true,
+            'U_ACTION'          => $this->u_action,
+        ]);
+
     }
 
     /**
