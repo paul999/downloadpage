@@ -147,6 +147,7 @@ class acp_controller
                 'ACTIVE'                => $row['active'],
                 'COUNT'                 => $fetch,
                 'L_ACTIVATE_DEACTIVATE' => $this->lang->lang($row['active'] ? 'DEACTIVATE' : 'ACTIVATE'),
+                'U_ACTIVATE_DEACTIVATE'	=> $this->u_action . "&amp;id={$row['version_id']}&amp;action=" . ($row['active'] ? 'deactivate' : 'activate'),
                 'U_DELETE'              => $this->u_action . '&amp;action=delete&amp;id=' . $row['version_id'],
             ));
         }
@@ -206,8 +207,10 @@ class acp_controller
         $sql = 'UPDATE ' . $this->versions_table . ' SET active = ' . (int)$active . ' WHERE release_id = ' . (int)$id;
         $this->db->sql_query($sql);
 
-        $result = new json_response();
-        $result->send(array('result' => true));
+        $json_response = new \phpbb\json_response;
+        $json_response->send(array(
+            'text'	=> $this->lang->lang((($active) ? 'DE' : '') . 'ACTIVATE'),
+        ));
     }
 
     /**
