@@ -319,6 +319,7 @@ class acp_controller
             $sql_ary[] = [
                 'release_id'    => $id,
                 'name'          => $this->request->variable($name . '_name', ''),
+                'description'   => $this->request->variable($name . '_description', ''),
                 'active'        => $this->request->is_set_post($name . '_active'),
                 'filename'      => $result->get('uploadname'),
                 'filelocation'  => $result->get('realname'),
