@@ -19,6 +19,7 @@ use phpbb\language\language;
 use phpbb\log\log_interface;
 use phpbb\request\request_interface;
 use phpbb\template\template;
+use phpbb\user;
 
 class acp_controller
 {
@@ -69,6 +70,10 @@ class acp_controller
      * @var log_interface
      */
     private $log;
+    /**
+     * @var user
+     */
+    private $user;
 
     /**
      * acp_controller constructor.
@@ -78,11 +83,12 @@ class acp_controller
      * @param upload $upload
      * @param language $lang
      * @param log_interface $log
+     * @param user $user
      * @param string $downloads_table
      * @param string $versions_table
      * @param string $releases_table
      */
-    public function __construct(request_interface $request, driver_interface $db, template $template, upload $upload, language $lang, log_interface $log, $downloads_table, $versions_table, $releases_table)
+    public function __construct(request_interface $request, driver_interface $db, template $template, upload $upload, language $lang, log_interface $log, user $user, $downloads_table, $versions_table, $releases_table)
     {
         $this->request          = $request;
         $this->downloads_table  = $downloads_table;
@@ -93,6 +99,7 @@ class acp_controller
         $this->template         = $template;
         $this->lang = $lang;
         $this->log = $log;
+        $this->user = $user;
     }
 
     /**
@@ -113,6 +120,8 @@ class acp_controller
             case 'deactivate':
                 $this->activate($id, $action == 'activate');
             break;
+            case 'delete':
+                $this->delete($id);
             case 'addRelease':
                 $this->createNewRelease();
         }
@@ -138,6 +147,7 @@ class acp_controller
                 'ACTIVE'                => $row['active'],
                 'COUNT'                 => $fetch,
                 'L_ACTIVATE_DEACTIVATE' => $this->lang->lang($row['active'] ? 'DEACTIVATE' : 'ACTIVATE'),
+                'U_DELETE'              => $this->u_action . '&amp;action=delete&amp;id=' . $row['version_id'],
             ));
         }
         $this->db->sql_freeresult($result);
@@ -156,6 +166,36 @@ class acp_controller
      */
     private function orderVersions($id, $up) {
 
+    }
+
+    private function delete($id) {
+        if (confirm_box(true))
+        {
+            $id = (int) $id;
+            $this->db->sql_query('DELETE FROM ' . $this->versions_table . " WHERE version_id = $id");
+            $this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_VERSION_DELETE', false, []);
+
+            if ($this->request->is_ajax())
+            {
+                $json_response = new \phpbb\json_response;
+                $json_response->send(array(
+                    'MESSAGE_TITLE'	=> $this->lang->lang('INFORMATION'),
+                    'MESSAGE_TEXT'	=> $this->lang->lang('BBCODE_DELETED'),
+                    'REFRESH_DATA'	=> array(
+                        'time'	=> 3
+                    )
+                ));
+            }
+        }
+        else
+        {
+            confirm_box(false, $this->lang->lang('CONFIRM_OPERATION'), build_hidden_fields(array(
+                    'id'	    => $id,
+                    'i'			=> '-paul999-downloadpage-acp-acp_module',
+                    'mode'		=> 'versions',
+                    'action'	=> 'delete'))
+            );
+        }
     }
 
     /**
@@ -197,6 +237,8 @@ class acp_controller
         ];
         $sql = 'INSERT INTO ' . $this->versions_table . ' ' . $this->db->sql_build_array('INSERT', $sql_ary);
         $this->db->sql_query($sql);
+
+        $this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_VERSION_ADD', false, [$name]);
     }
 
     /**

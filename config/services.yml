@@ -25,6 +25,7 @@ services:
           - '@files.upload'
           - '@language'
           - '@log'
+          - '@user'
           - '%paul999.downloadpage.tables.downloads%'
           - '%paul999.downloadpage.tables.versions%'
           - '%paul999.downloadpage.tables.releases%'
