@@ -10,6 +10,7 @@
 
 namespace paul999\downloadpage\controller;
 
+use paul999\downloadpage\core\constants;
 use phpbb\console\command\user\add;
 use phpbb\db\driver\driver_interface;
 use phpbb\exception\http_exception;
@@ -305,7 +306,7 @@ class acp_controller
         ];
         $error = [];
         $this->upload->set_allowed_extensions(['zip']);
-        foreach (['full_package', 'update', 'translation'] as $name) {
+        foreach ([constants::FULL_PACKAGE => 'full_package', constants::UPDATE_PACKAGE => 'update', constants::TRANSLATION => 'translation'] as $type => $name) {
             $result = $this->upload->handle_upload('files.types.form', $name . '_upload');
             $this->upload->common_checks($result);
 
@@ -323,6 +324,7 @@ class acp_controller
                 'active'        => $this->request->is_set_post($name . '_active'),
                 'filename'      => $result->get('uploadname'),
                 'filelocation'  => $result->get('realname'),
+                'type'          => $type,
             ];
             $this->db->sql_query('INSERT INTO ' . $this->downloads_table . ' ' . $this->db->sql_build_array('INSERT', $sql_ary));
         }
