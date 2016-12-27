@@ -316,7 +316,7 @@ class acp_controller
             $result->move_file('files/');
 
 
-            $sql_ary[] = [
+            $sql_ary = [
                 'release_id'    => $id,
                 'name'          => $this->request->variable($name . '_name', ''),
                 'description'   => $this->request->variable($name . '_description', ''),
@@ -324,8 +324,8 @@ class acp_controller
                 'filename'      => $result->get('uploadname'),
                 'filelocation'  => $result->get('realname'),
             ];
+            $this->db->sql_query('INSERT INTO ' . $this->downloads_table . ' ' . $this->db->sql_build_array('INSERT', $sql_ary));
         }
-        $this->db->sql_multi_insert($this->downloads_table, $sql_ary);
 
         if ($error) {
             // TODO: Handle errors properly. NOTE: A release is arleady created!
