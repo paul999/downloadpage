@@ -105,15 +105,17 @@ class acp_controller
         switch ($action) {
             case 'order':
                 $this->orderVersions($id, $this->request->variable('up', false));
+            break;
             case 'add':
                 $this->addVersion();
+            break;
             case 'active':
                 $this->activate($id, $this->request->is_set('active'));
+            break;
             case 'addRelease':
                 $this->createNewRelease();
-            default:
-                $this->versionsIndex();
         }
+        $this->versionsIndex();
     }
 
     /**
