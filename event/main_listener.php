@@ -108,9 +108,12 @@ class main_listener implements \Symfony\Component\EventDispatcher\EventSubscribe
     }
 
     public function homepage() {
-        $this->template->assign_var('S_DOWNLOAD_PAGE', true);
+        $this->template->assign_vars([
+            'S_DOWNLOAD_PAGE' => true,
+            'L_DOWNLOAD_PHPBB_HOME' => $this->lang->lang('DOWNLOAD_PHPBB_HOME', $this->helper->route('paul999_downloadpage_main')),
+        ]);
         $this->lang->add_lang('common', 'paul999/downloadpage');
-        $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE active = 1 ORDER BY sort DESC';
+        $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE active = 1 AND eol <> \'\' ORDER BY sort DESC';
 
         $result = $this->db->sql_query_limit($sql, 1);
 
