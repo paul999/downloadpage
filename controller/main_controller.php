@@ -103,6 +103,7 @@ class main_controller
     public function main()
     {
         $this->lang->add_lang('common', 'paul999/downloadpage');
+        $this->template->assign_var('S_DOWNLOAD_PAGE', true);
         $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE active = 1 ORDER BY sort DESC';
 
         $result = $this->db->sql_query($sql);

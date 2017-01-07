@@ -35,5 +35,11 @@ services:
         arguments:
           - '@template'
           - '@controller.helper'
+          - '@dbal.conn'
+          - '@language'
+          - '@user'
+          - '%paul999.downloadpage.tables.downloads%'
+          - '%paul999.downloadpage.tables.versions%'
+          - '%paul999.downloadpage.tables.releases%'
         tags:
             - { name: event.listener }
