@@ -53,12 +53,14 @@
                 <!-- BEGIN releases.versions.downloads -->
                     <!-- IF releases.versions.downloads.S_LANG_PACKAGE -->
                         <!-- IF releases.versions.FIRST_ROW -->
+                        <div class="news">
                             <h2>{L_LANG_PACKS}</h2>
                             <ul>
                         <!-- ENDIF -->
                         <li><a href="{releases.versions.downloads.U_DOWNLOAD}">{releases.versions.downloads.NAME}</a></li>
                         <!-- IF releases.versions.S_LAST_ROW -->
                             </ul>
+                        </div>
                         <!-- ENDIF -->
                     <!-- ENDIF -->
                 <!-- END releases.versions.downloads -->
@@ -86,6 +88,7 @@
                                 <br />
                             </p>
                             <!-- IF !releases.versions.S_LAST_ROW -->
+                            <div class="news">
                             <h2>{L_PREVIOUS_VERSIONS}</h2>
                             <p class="always_current">{releases.L_ALWAYS_CURRENT_UPDATE}</p>
                                     <ul>
@@ -96,6 +99,7 @@
 
                         <!-- IF !releases.versions.FIRST_ROW and releases.versions.S_LAST_ROW -->
                             </ul>
+                            </div>
                         <!-- ENDIF -->
                     <!-- ENDIF -->
                 <!-- END releases.versions.downloads -->

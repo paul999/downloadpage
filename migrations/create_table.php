@@ -27,7 +27,8 @@ class create_table extends \phpbb\db\migration\migration
                     ),
                     'PRIMARY_KEY' => 'version_id',
                     'KEYS'        => array(
-                        'sort' => array('INDEX', 'sort'),
+                        'sort'          => array('INDEX', 'sort'),
+                        'active'        => array('INDEX', 'active'),
                     ),
                 ),
                 $this->table_prefix . 'dp_releases' => array(
@@ -41,6 +42,8 @@ class create_table extends \phpbb\db\migration\migration
                     'PRIMARY_KEY' => 'release_id',
                     'KEYS'        => array(
                         'version_id' => array('INDEX', 'version_id'),
+                        'release_time'  => array('INDEX', 'release_time'),
+                        'active'        => array('INDEX', 'active'),
                     ),
                 ),
                 $this->table_prefix . 'dp_downloads' => array(
@@ -58,6 +61,7 @@ class create_table extends \phpbb\db\migration\migration
                     'PRIMARY_KEY' => 'download_id',
                     'KEYS'        => array(
                         'release_id' => array('INDEX', 'release_id'),
+
                     ),
                 ),
             ),
