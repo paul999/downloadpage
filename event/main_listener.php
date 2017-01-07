@@ -115,7 +115,7 @@ class main_listener implements \Symfony\Component\EventDispatcher\EventSubscribe
         $this->lang->add_lang('common', 'paul999/downloadpage');
         $sql = 'SELECT * FROM ' . $this->versions_table . ' WHERE active = 1 AND eol != \'\' ORDER BY sort DESC';
 
-        $result = $this->db->sql_query_limit($sql, 1);
+        $result = $this->db->sql_query($sql);
 
         while ($row = $this->db->sql_fetchrow($result))
         {
