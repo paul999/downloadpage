@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge(
     $lang, array(
-        'PHPBB_FREE_IN_USE'         => 'phpBB is vrij in gebruik, zolang je kennis hebt genomen van de licentie waar de phpBB software onder valt.',
+        'PHPBB_FREE_IN_USE'         => 'phpBB is vrij in gebruik, zolang je kennis hebt genomen van de <a href="http://www.phpbb.com/downloads/license/">licentie</a> waar de phpBB software onder valt.',
         'DOWNLOAD_PHPBB'            => 'Download phpBB',
         'UPDATE_PHPBB'              => 'Update phpBB',
         'USE_NEW_INSTALLATION'      => 'Gebruik dit pakket voor een nieuwe installatie.',
@@ -51,5 +51,8 @@ $lang = array_merge(
         'VERSION_EOL'       => 'Versie End of Life',
         'PHPBB_EOL'         => 'Let op: phpBB %s is End of Life en zal binnenkort niet meer ondersteund worden. Het is aangeraden om te upgraden naar 1 van de bovenstaande versies.',
         'RELEASED_AT'       => 'Vrijgegeven op %s',
+
+        'FULL_PACKAGE'      => 'Volledig pakket',
+        'UPDATE_PACKAGE'    => 'Automatische updater',
     )
 );
