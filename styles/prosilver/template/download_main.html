@@ -34,6 +34,7 @@
                                 <br />
                             </p>
                             <!-- IF !releases.versions.S_LAST_ROW -->
+                                <div class="news">
                                 <h2>{L_PREVIOUS_VERSIONS}</h2>
                                 <p class="always_current">{releases.L_ALWAYS_CURRENT_DOWNLOAD}</p>
                                 <ul style="display: block" id="download{releases.RELEASE_ID}">
@@ -44,6 +45,7 @@
 
                         <!-- IF !releases.versions.FIRST_ROW and releases.versions.S_LAST_ROW -->
                             </ul>
+                        </div>
                         <!-- ENDIF -->
                     <!-- ENDIF -->
                 <!-- END releases.versions.downloads -->
