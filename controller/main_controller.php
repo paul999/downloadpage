@@ -153,7 +153,7 @@ class main_controller
             $this->db->sql_freeresult($result_row);
         }
         $this->db->sql_freeresult($result);
-        return $this->controller_helper->render('@paul999_downloadpage/download_main.html');
+        return $this->controller_helper->render('@paul999_downloadpage/download_main.html', $this->lang->lang('DOWNLOAD_PAGE'));
     }
 
     /**
