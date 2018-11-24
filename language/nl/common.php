@@ -49,7 +49,7 @@ $lang = array_merge(
         'LANG_PACKS'                => 'Nederlandse vertaling',
 
         'VERSION_EOL'       => 'Versie End of Life',
-        'PHPBB_EOL'         => 'Let op: phpBB %s is End of Life en wordt niet meer ondersteund worden. Het is aangeraden om te upgraden naar 1 van de bovenstaande versies.',
+        'PHPBB_EOL'         => 'Let op: phpBB %s is End of Life en wordt niet meer ondersteund. Het is aangeraden om te upgraden naar 1 van de bovenstaande versies.',
         'RELEASED_AT'       => 'Vrijgegeven op %s',
 
         'FULL_PACKAGE'      => 'Volledig pakket',
