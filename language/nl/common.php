@@ -53,7 +53,7 @@ $lang = array_merge(
         'RELEASED_AT'       => 'Vrijgegeven op %s',
 
         'FULL_PACKAGE'      => 'Volledig pakket',
-        'UPDATE_PACKAGE'    => 'Automatische updater',
+        'UPDATE_PACKAGE'    => 'Geavanceerde updater',
         'DOWNLOAD_PHPBB_HOME'   => 'phpBB is vrij in gebruik, zolang u kennis heeft genomen van de <a href="http://www.phpbb.com/downloads/license/">licentie</a> waar de phpBB software onder valt. <a href="%s">Meer downloads.</a>',
         'DOWNLOAD_PAGE'     => 'Downloads',
     )
